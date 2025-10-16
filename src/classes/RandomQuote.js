@@ -9,7 +9,16 @@ class RandomQuote {
     return new Quote(id, text, author);
   }
   static getRandomQuoteViaAPI() {
-    // request new quote via API
+    const url = "https://quoteslate.vercel.app/api/quotes/random";
+    const options = { headers: { "Content-type": "application/json" } };
+    return fetch(url, options)
+      .then((response) => response.json()) //return implicitly
+      .then((data) => {
+        // parameters of promise where id:id, quote:text, author:author
+        const { id, quote, author } = data;
+        return new Quote(id, quote, author); //return explicitly
+      })
+      .catch((error) => console.error(error));
   }
 }
 
