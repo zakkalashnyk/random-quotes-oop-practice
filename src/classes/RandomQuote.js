@@ -8,17 +8,21 @@ class RandomQuote {
       quotes[MathUtils.generateRandomInt(quotes.length)];
     return new Quote(id, text, author);
   }
-  static getRandomQuoteViaAPI() {
+  // each async function return Promise
+  // promise returned with getRandomQuoteViaAPI() will always be "fulfilled"
+  // result of the "fulfilled" promise will be either Quote or undefined(error)
+  // that's why there is no need for try/catch block where function been called
+  static async getRandomQuoteViaAPI() {
     const url = "https://quoteslate.vercel.app/api/quotes/random";
     const options = { headers: { "Content-type": "application/json" } };
-    return fetch(url, options)
-      .then((response) => response.json()) //return implicitly
-      .then((data) => {
-        // parameters of promise where id:id, quote:text, author:author
-        const { id, quote, author } = data;
-        return new Quote(id, quote, author); //return explicitly
-      })
-      .catch((error) => console.error(error));
+    try {
+      const response = await fetch(url, options);
+      const { id, quote: text, author } = await response.json(); // parameters of promise where id:id, quote:text, author:author
+      //resolves promise as Quote(promise become "fulfilled")
+      return new Quote(id, text, author); //return explicitly
+    } catch (error) {
+      console.error(error); // return undefined implicitly (resolves promise to undefined)
+    }
   }
 }
 

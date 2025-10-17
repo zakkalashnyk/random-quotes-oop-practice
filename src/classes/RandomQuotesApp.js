@@ -16,7 +16,7 @@ class RandomQuotesApp {
     this.quoteAuthorElement.textContent = this.currentQuote.formatAuthor();
   }
 
-  changeCurentQuote(newQuote) {
+  changeCurrentQuote(newQuote) {
     if (newQuote instanceof Quote) {
       this.currentQuote = newQuote;
       this.displayCurrentQuote();
@@ -28,10 +28,8 @@ class RandomQuotesApp {
     this.changeCurentQuote(randomQuote);
   }
 
-  getRandomQuoteViaAPI() {
-    RandomQuote.getRandomQuoteViaAPI().then((quoteViaAPI) =>
-      this.changeCurentQuote(quoteViaAPI)
-    );
+  async getRandomQuoteViaAPI() {
+    this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaAPI());
   }
 
   init() {
