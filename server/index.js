@@ -10,10 +10,16 @@ function getRandomQuote() {
   return quote;
 }
 
-// just for localhost:8080 (frontend)
+// option with variable
+// const corsOption =  origin: ["http://127.0.0.1:8080", 'http://localhost:8080' ];
+// origin : '*' - default cross-origin value for any origin
+// app.use(cors(corsOption));
+
+// direct request
+// allow CORS just for localhost:8080 (frontend)
 app.use(
   cors({
-    origin: "http://127.0.0.1:8080",
+    origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
   })
 );
 
