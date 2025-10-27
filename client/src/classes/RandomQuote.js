@@ -24,6 +24,19 @@ class RandomQuote {
       console.error(error); // return undefined implicitly (resolves promise to undefined)
     }
   }
+
+  static async getRandomQuoteViaOwnAPI() {
+    const url = "http://localhost:3000/quotes/unique";
+    const options = { headers: { "Content-type": "application/json" } };
+    try {
+      const response = await fetch(url, options);
+      const { id, text, author } = await response.json(); // parameters of promise where id:id, quote:text, author:author
+      //resolves promise as Quote(promise become "fulfilled")
+      return new Quote(id, text, author); //return explicitly
+    } catch (error) {
+      console.error(error); // return undefined implicitly (resolves promise to undefined)
+    }
+  }
 }
 
 export default RandomQuote;

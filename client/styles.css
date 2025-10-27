@@ -17,7 +17,7 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 10px;
-  margin: 0px 7px;
+  margin: 10px 7px;
 }
 
 .btn-primary {
@@ -34,6 +34,14 @@ body {
 
 .btn-secondary:hover {
   background-color: #00b32d;
+}
+
+.btn-third {
+  background-color: #5924d3;
+}
+
+.btn-third:hover {
+  background-color: #7b255a;
 }
 
 .btn-danger {
