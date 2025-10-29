@@ -17,11 +17,7 @@ function getRandomQuote() {
 
 // direct request
 // allow CORS just for localhost:8080 (frontend)
-app.use(
-  cors({
-    origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
-  })
-);
+app.use(cors());
 
 app.get("/quotes/unique", (req, res) => {
   const randomQuote = getRandomQuote();
