@@ -15,8 +15,6 @@ function getRandomQuote() {
 // origin : '*' - default cross-origin value for any origin
 // app.use(cors(corsOption));
 
-// direct request
-// allow CORS just for localhost:8080 (frontend)
 app.use(cors());
 
 app.get("/quotes/unique", (req, res) => {
