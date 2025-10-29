@@ -44,7 +44,7 @@ This project consist of a client-side Vanilla JavaScript app and a server-side E
 ### Run client
 
 1. There is no need to build client as it already contain HTML, CSS and JS files
-1. In the `client/src/config.js` replace http://localhost:3000 with URL assigned to the server API in step 7 of previous section. For example https://my-random-quote-api.com
+1. In the `client/config.js` replace http://localhost:3000 with URL assigned to the server API in step 7 of previous section. For example https://my-random-quote-api.com
 1. Host all client files from the `client` subfolder on the public web server
    `npx live-server client`
 1. Get assigned by the hosting provider URL for your client frontend application.
